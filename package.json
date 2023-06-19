@@ -11,6 +11,9 @@
     "prod": "node express.js"
   },
   "author": "",
+  "engines": {
+    "node": ">=14 <=16.18.0"
+  },
   "type": "module",
   "license": "ISC",
   "dependencies": {
