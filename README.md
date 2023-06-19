@@ -3,6 +3,18 @@ It is robust web scraping tool that focuses specifically on extracting data from
 
 ![image](https://github.com/harshit0571/ScrapeMaster/assets/62325935/b75b3594-3438-42c0-be85-1ddf97630217)
 
+## How To Use
+
+Create a post request to `https://scrapemaster-d1vr.onrender.com` with body that contains search query in json format.
+<br>
+eg: 
+```shell
+{
+    "search":"smartphones"
+}
+```
+
+
 ## Setup
 
 Here are the steps to run ScrapeMaster in your system.
