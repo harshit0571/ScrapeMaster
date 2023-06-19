@@ -28,7 +28,7 @@ async function start(search) {
       "--single-process",
       "--no-zygote",
     ],
-    executablePath: usr/bin/google-chrome-stable
+    executablePath: "usr/bin/google-chrome-stable"
 });
   const page = await browser.newPage();
   await page.goto("https://www.amazon.in");
