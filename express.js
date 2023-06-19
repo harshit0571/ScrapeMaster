@@ -27,13 +27,9 @@ async function start(search) {
   await page.goto("https://www.amazon.in");
 
   await page.type("#twotabsearchtextbox", `${search}`);
-  await page.screenshot({ path: "assets/1.png", fullPage: true });
   await page.click(".nav-search-submit");
   await page.waitForNavigation();
-  await page.screenshot({ path: "assets/2.png", fullPage: true });
   await page.waitForSelector(".s-result-item");
-
-  await page.screenshot({ path: "assets/3.png" , fullPage:false});
 
   const images = await page.$$eval(".s-image", (texts) => {
     return texts.map((x) => x.src);
@@ -46,10 +42,7 @@ async function start(search) {
   const prices = await page.$$eval("span.a-price > span.a-offscreen", (texts) => {
     return texts.map((x) => x.textContent);
   });
-
-  // console.log(images);
-  // console.log(titles);
-
+  
   let product = [];
   let i = 0;
   while (i < images.length && i < prices.length && i < titles.length) {
