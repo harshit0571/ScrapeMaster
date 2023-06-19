@@ -2,7 +2,7 @@ import Express from "express";
 import puppeteer from "puppeteer";
 
 var app=Express();
-const port =8001;
+const port =8005;
 app.use(Express.json());
 
 
@@ -28,8 +28,9 @@ async function start(search) {
       "--single-process",
       "--no-zygote",
     ],
-    executablePath: "/opt/homebrew/bin/chromium"
+    executablePath: puppeteer.executablePath()
 });
+    console.log(puppeteer.executablePath());
   const page = await browser.newPage();
   await page.goto("https://www.amazon.in");
 
