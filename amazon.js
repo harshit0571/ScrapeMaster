@@ -5,35 +5,40 @@ async function start() {
   const page = await browser.newPage();
   await page.goto("https://www.amazon.in");
 
-  await page.type("#twotabsearchtextbox", "iphone x 64gb");
+  await page.type("#twotabsearchtextbox", "smartphone");
   await page.screenshot({ path: "assets/1.png", fullPage: true });
   await page.click(".nav-search-submit");
   await page.waitForNavigation();
   await page.screenshot({ path: "assets/2.png", fullPage: true });
   await page.waitForSelector(".s-result-item");
 
-  await page.screenshot({ path: "assets/3.png", fullPage: true });
+  await page.screenshot({ path: "assets/3.png" , fullPage:false});
 
-  const text = await page.$$eval(
-    ".s-result-item  .s-card-border",
-    (container) => {
-      const image = container.map((x) => {
-        x.querySelector("img");
-      });
-      const price = container.map((x) => {
-        x.querySelector(".a-offscreen");
-      });
-      const title = container.map((x) => {
-        x.querySelector("h2 > span");
-      });
+  const images = await page.$$eval(".s-image", (texts) => {
+    return texts.map((x) => x.src);
+  });
 
-      // const imag = image.map((x) => x.src);
-      // price = price.map((x) => x.textContent);
-      // title = title.map((x) => x.textContent);
-      return container;
-    }
-  );
-  console.log(text[0]);
+  const titles = await page.$$eval("h2.a-size-mini", (texts) => {
+    return texts.map((x) => x.textContent);
+  });
+
+  const prices = await page.$$eval("span.a-price > span.a-offscreen", (texts) => {
+    return texts.map((x) => x.textContent);
+  });
+
+  // console.log(images);
+  // console.log(titles);
+  console.log(prices);
+
+  let product = [];
+  let i = 0;
+  while (i < images.length && i < prices.length && i < titles.length) {
+    product = [...product,{ title: titles[i], image: images[i], price: prices[i] }];
+    //
+    i++;
+  }
+  console.log(product);
+
   await browser.close();
 }
 
