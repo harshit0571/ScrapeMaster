@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "practice": "nodemon practice.js",
     "amazon": "nodemon amazon.js",
-    "express": "nodemon express.js"
+    "express": "nodemon express.js",
+    "prod": "node express.js"
   },
   "author": "",
   "type": "module",
