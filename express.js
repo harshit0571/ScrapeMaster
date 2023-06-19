@@ -28,7 +28,8 @@ async function start(search) {
       "--single-process",
       "--no-zygote",
     ],
-    executablePath: puppeteer.executablePath()
+    executablePath: "/opt/homebrew/bin/chromium"
+    // executablePath: puppeteer.executablePath() 
 });
     console.log(puppeteer.executablePath());
   const page = await browser.newPage();
@@ -43,7 +44,7 @@ async function start(search) {
     return texts.map((x) => x.src);
   });
 
-  const titles = await page.$$eval("h2.a-size-mini", (texts) => {
+  const titles = await page.$$eval("h2.s-line-clamp-2", (texts) => {
     return texts.map((x) => x.textContent);
   });
 
