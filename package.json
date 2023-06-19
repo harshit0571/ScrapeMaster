@@ -6,12 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "practice": "nodemon practice.js",
-    "amazon": "nodemon amazon.js"
+    "amazon": "nodemon amazon.js",
+    "express": "nodemon express.js"
   },
   "author": "",
   "type": "module",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.18.2",
     "nodemon": "^2.0.22",
     "puppeteer": "^20.7.2"
   }
