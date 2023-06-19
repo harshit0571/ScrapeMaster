@@ -49,6 +49,4 @@ Feel free to contribute by opening an issue.
 
 ## License
 
-Specify the license under which your project is distributed. For example:
-
 This project is licensed under the [MIT License](LICENSE).
