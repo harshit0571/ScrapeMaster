@@ -3,9 +3,13 @@ import puppeteer from "puppeteer";
 
 var app=Express();
 const port =8000;
+app.use(Express.json());
 
-app.get('/', async (req, res)=>{
-    const p=await start();
+
+app.post('/', async (req, res)=>{
+    const data=await req.body;
+    console.log(data);
+    const p=await start(data.search);
     res.json(p);
 }    )
 app.listen(port, ()=>{
@@ -17,12 +21,12 @@ app.listen(port, ()=>{
 
 
 
-async function start() {
+async function start(search) {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto("https://www.amazon.in");
 
-  await page.type("#twotabsearchtextbox", "smartphone");
+  await page.type("#twotabsearchtextbox", `${search}`);
   await page.screenshot({ path: "assets/1.png", fullPage: true });
   await page.click(".nav-search-submit");
   await page.waitForNavigation();
