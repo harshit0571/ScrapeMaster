@@ -21,7 +21,7 @@ async function start() {
 
   //store photos
   await page.goto("https://learnwebcode.github.io/practice-requests/");
-  const photos = await page.$$eval("img", (imgs) => {
+  const photos = await page.$$eval("div.card > img", (imgs) => {
     return imgs.map((x) => x.src);
   });
   console.log(photos);
