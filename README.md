@@ -5,7 +5,7 @@ It is robust web scraping tool that focuses specifically on extracting data from
 
 ## How To Use
 
-Create a post request to `https://scrapemaster-d1vr.onrender.com` with body that contains search query in json format.
+Create a post request to `http://15.207.100.214:8000/` with body that contains search query in json format.
 <br>
 eg: 
 ```shell
