@@ -12,6 +12,9 @@ app.post('/', async (req, res)=>{
     const p=await start(data.search);
     res.json(p);
 }    )
+app.get('/', async(req, res)=>{
+  res.send("working scrape master")
+})
 app.listen(port, ()=>{
     console.log("working on port " + port);
 })
@@ -28,7 +31,6 @@ async function start(search) {
       "--single-process",
       "--no-zygote",
     ],
-    executablePath: "/opt/homebrew/bin/chromium"
     // executablePath: puppeteer.executablePath() 
 });
     console.log(puppeteer.executablePath());
